@@ -4,13 +4,25 @@ const escapeRegExp = (text) => {
   return text.replace(/[-[\]{}()*+?.,\\^$|#]/g, '\\$&');
 }
 
-exports.re = {
-  str: (literalString)=> {
-    const escapedStr = escapeRegExp(literalString)
-    return new RegExp(escapedStr)
-  },
+exports.re = class {
 
-  regexp: (regexpAsString) => {
-    return new RegExp(regexpAsString)
+  result = ''
+
+  str(literalString) {
+    const escapedStr = escapeRegExp(literalString)
+
+    console.log(this);
+    this.result = `${this.result}${escapedStr}`
+    return this;
   }
+
+  regexp(regexpAsString) {
+    this.result = `${this.result}${regexpAsString}`
+    return this;
+  }
+
+  get() {
+    return new RegExp(this.result)
+  }
+
 };
