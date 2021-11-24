@@ -1,3 +1,12 @@
+
+const escapeRegExp = (text) => {
+  // TODO We decided not to escape space. Consider escaping \n, \t, ... etc.
+  return text.replace(/[-[\]{}()*+?.,\\^$|#]/g, '\\$&');
+}
+
 exports.re = {
-  str: (str)=> new RegExp(str)
+  str: (literalString)=> {
+    const escapedStr = escapeRegExp(literalString)
+    return new RegExp(escapedStr)
+  }
 };
