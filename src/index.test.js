@@ -16,5 +16,9 @@ describe('Special characters in .str() should be escaped', ()=>{
     const generatedRegExp = re.str('*word')
     expect(generatedRegExp).toEqual(/\*word/)
   })
+  test('All special chars: [ ] \\ ^ $ . | ? * + ( )', ()=>{
+    const generatedRegExp = re.str('[ ] \\ ^ $ . | ? * + ( )')
+    expect(generatedRegExp).toEqual(/\[ \] \\ \^ \$ \. \| \? \* \+ \( \)/)
+  })
 
 })
