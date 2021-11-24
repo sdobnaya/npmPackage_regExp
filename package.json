@@ -6,6 +6,9 @@
   "repository": "https://github.com/Sopelka/regexp-ext",
   "author": "Sopelka, Iv Ov <iv-ov@users.noreply.github.com>",
   "license": "We haven't discussed it yet",
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "jest": "^27.3.1"
   }
