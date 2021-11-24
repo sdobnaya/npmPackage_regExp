@@ -22,3 +22,8 @@ describe('Special characters in .str() should be escaped', ()=>{
   })
 
 })
+
+test('Add arbitrary RegExp as a string', ()=>{
+  const generatedRegExp = re.regexp('Hello,? World')
+  expect(generatedRegExp).toEqual(/Hello,? World/)
+})

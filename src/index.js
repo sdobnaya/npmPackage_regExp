@@ -8,5 +8,9 @@ exports.re = {
   str: (literalString)=> {
     const escapedStr = escapeRegExp(literalString)
     return new RegExp(escapedStr)
+  },
+
+  regexp: (regexpAsString) => {
+    return new RegExp(regexpAsString)
   }
 };
