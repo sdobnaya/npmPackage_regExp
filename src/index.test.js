@@ -33,18 +33,45 @@ describe('Simple strings', ()=>{
 
 describe('.regexp() method', () => {
   test('Add arbitrary RegExp as a string', ()=>{
-    const re = new RegExpExtension()
-    const generatedRegExp = re.regexp('Hello,? World').get()
-    expect(generatedRegExp).toEqual(/Hello,? World/)
+    const re = new RegExpExtension();
+    const generatedRegExp = re.regexp('Hello,? World').get();
+    expect(generatedRegExp).toEqual(/Hello,? World/);
   })
 })
 
 
 describe('Chaining: Combine regexp with several methods', ()=>{
   test('Several .str() methods', () => {
-    const re = new RegExpExtension()
-    const generatedRegExp = re.str('Super').str('Man').get()
+    const re = new RegExpExtension();
+    const generatedRegExp = re.str('Super').str('Man').get();
 
-    expect(generatedRegExp).toEqual(/SuperMan/)
+    expect(generatedRegExp).toEqual(/SuperMan/);
+  })
+})
+
+describe('Anchor comparison', () => {
+  test('Full string comparison', () => {
+    const re = new RegExpExtension();
+    const generatedRegExp = re.fullMatch('A dog123').get();
+
+    expect(generatedRegExp).toEqual(/^A dog123$/);
+  })
+
+  // ...
+})
+
+describe('Quantifiers', () => {
+  test('Maybe', () => {
+    const re = new RegExpExtension();
+    const generatedRegExp = re.maybe('A dog123').get();
+
+    expect(generatedRegExp).toEqual(/(A dog123)?/);
+  })
+
+  test('Maybe with chaining', () => {
+    const re = new RegExpExtension();
+    const generatedRegExp = re.str('Hello').maybe('!').get();
+
+    expect(generatedRegExp).toEqual(/Hello(!)?/);
   })
 })

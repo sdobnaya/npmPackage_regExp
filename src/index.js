@@ -8,6 +8,7 @@ exports.re = class {
 
   result = ''
 
+  /** Добавляет буквальную часть в регулярное выражение */
   str(literalString) {
     const escapedStr = escapeRegExp(literalString)
 
@@ -16,11 +17,23 @@ exports.re = class {
     return this;
   }
 
+  /** Добавляет регулярное выражение в регулярное выражение */
   regexp(regexpAsString) {
     this.result = `${this.result}${regexpAsString}`
     return this;
   }
 
+  fullMatch(pattern) {
+    this.result = `^${pattern}$`;
+    return this;
+  }
+
+  maybe(pattern) {
+    this.result = `${this.result}(${pattern})?`;
+    return this;
+  }
+
+  /** Возвращает результат */
   get() {
     return new RegExp(this.result)
   }

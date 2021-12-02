@@ -1,6 +1,6 @@
 {
   "name": "regexp-ext",
-  "version": "0",
+  "version": "1",
   "description": "A tool for descriptive writing of regular expressions",
   "main": "index.js",
   "repository": "https://github.com/Sopelka/regexp-ext",
