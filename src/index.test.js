@@ -74,4 +74,22 @@ describe('Quantifiers', () => {
 
     expect(generatedRegExp).toEqual(/Hello(!)?/);
   })
+
+  describe('Number of occurrences', () => {
+    test('min count of a string', () => {
+      const re = new RegExpExtension();
+
+      const generatedRegExp = re.str('Hello').quantity('!', 3).get();
+
+      expect(generatedRegExp).toEqual(/Hello(!){3}/);
+    })
+
+    test('min and max count of a string', () => {
+      const re = new RegExpExtension();
+
+      const generatedRegExp = re.quantity('buy', 1, 3).get();
+
+      expect(generatedRegExp).toEqual(/(buy){1,3}/);
+    })
+  })
 })

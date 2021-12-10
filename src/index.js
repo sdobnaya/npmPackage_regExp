@@ -23,11 +23,25 @@ exports.re = class {
     return this;
   }
 
+  quantity(pattern, minCount, maxCount = null) {
+    if (!maxCount) {
+      this.result = `${this.result}(${pattern}){${minCount}}`
+    } else {
+      this.result = `${this.result}(${pattern}){${minCount},${maxCount}}`
+    }
+    return this;
+  }
+
   fullMatch(pattern) {
     this.result = `^${pattern}$`;
     return this;
   }
 
+  /**
+   * TODO: consider placing it in "newbie-friendly" layer
+   * @param {*} pattern 
+   * @returns 
+   */
   maybe(pattern) {
     this.result = `${this.result}(${pattern})?`;
     return this;
