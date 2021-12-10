@@ -24,11 +24,9 @@ exports.re = class {
   }
 
   quantity(pattern, minCount, maxCount = null) {
-    if (!maxCount) {
-      this.result = `${this.result}(${pattern}){${minCount}}`
-    } else {
-      this.result = `${this.result}(${pattern}){${minCount},${maxCount}}`
-    }
+    this.result = `${this.result}(${pattern}){${minCount}${
+      maxCount !== null ? `,${maxCount}` : ''
+    }}`
     return this;
   }
 
