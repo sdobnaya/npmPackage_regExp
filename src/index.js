@@ -55,4 +55,11 @@ exports.re = class {
     return this;
   }
 
+  findNumerals(quantity){
+    const midterm = '\\d'.repeat(quantity);
+    this.result = `${midterm}`;
+
+    return this;
+  }
+
 };

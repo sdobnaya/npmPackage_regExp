@@ -101,5 +101,13 @@ describe('Quantifiers', () => {
 
       expect(generatedRegExp).toEqual(/\bHello\b/);
     })
+
+    test('numeral concatanations', () => {
+      const re = new RegExpExtension();
+
+      const generatedRegExp = re.str('0 00 000 00 0').findNumerals(3).get();
+
+      expect(generatedRegExp).toEqual(/\b\d\d\d\b/);
+    })
   })
 })
