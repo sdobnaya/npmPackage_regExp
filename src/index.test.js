@@ -92,4 +92,14 @@ describe('Quantifiers', () => {
       expect(generatedRegExp).toEqual(/(buy){1,3}/);
     })
   })
+
+  describe('Boundaries', () => {
+    test('word boundaries', () => {
+      const re = new RegExpExtension();
+
+      const generatedRegExp = re.str('Hello World').findWord('Hello').get();
+
+      expect(generatedRegExp).toEqual(/\bHello\b/);
+    })
+  })
 })

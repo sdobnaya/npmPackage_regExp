@@ -50,4 +50,9 @@ exports.re = class {
     return new RegExp(this.result)
   }
 
+  findWord(expectedWord) {
+    this.result = `\\b${expectedWord}\\b`;
+    return this;
+  }
+
 };
