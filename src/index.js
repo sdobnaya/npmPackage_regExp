@@ -12,7 +12,6 @@ exports.re = class {
   str(literalString) {
     const escapedStr = escapeRegExp(literalString)
 
-    console.log(this);
     this.result = `${this.result}${escapedStr}`
     return this;
   }

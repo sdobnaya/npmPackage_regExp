@@ -110,4 +110,65 @@ describe('Quantifiers', () => {
       expect(generatedRegExp).toEqual(/\b\d\d\d\b/);
     })
   })
+
+
+  // -----------
+  describe.skip('Some complex examples', () => {
+    test('Email RegExp from Chromium (maybe)', () => {
+      const EMAIL_REGEX_cryptic_way = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      const re = new RegExpExtension();
+
+      const EMAIL_REGEX_readable_way = re
+        .capturingGroup( // What for?
+          re.alternation(
+            // .quantity(..., 0, 1)
+            re.oneOrMore(
+              re.anyCharacterExcept('<>()[]\\.,;:\s@"')
+              // re.notOneOf('...')
+            ).zeroOrMore(
+              re.literally('.')
+              .mayBe(re.anyCharacterExcept('<>()[]\\.,;:\s@"'))
+            ),
+            re.OR
+            .capturingGroup(
+              re.literally('"')
+              .oneOrMore(re.anyCharacter())
+              .literally('"')
+            )
+          )
+        )
+        .literally('@')
+        .capturingGroup(
+          re.alternation(
+            re.capturingGroup(
+              re.literally('[')
+              .quantity(re.inTheRangeBetween('0', '9'), 1, 3)
+              .literally('.')
+              .quantity(re.inTheRangeBetween('0', '9'), 1, 3)
+              .literally('.')
+              .quantity(re.inTheRangeBetween('0', '9'), 1, 3)
+              .literally('.')
+              .quantity(re.inTheRangeBetween('0', '9'), 1, 3)
+              .literally(']')
+            ),
+            re.OR
+            .capturingGroup(
+              re.capturingGroup(
+                re.oneOf(['a', 'z'], ['A', 'Z'], re.literally('-'), [0, 9])
+                .oneOrMore(re.anyCharacter())
+                .literally('"')
+                // ...
+                // TODO write further
+                // ...
+              )
+            )
+          )
+        )
+        .getFullMatch()
+
+      expect(EMAIL_REGEX_readable_way).toEqual(EMAIL_REGEX_cryptic_way);
+    })
+
+  })
 })
