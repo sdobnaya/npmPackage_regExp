@@ -63,5 +63,5 @@ const EMAIL_REGEX = re.fullMatch()
             )
           )
         )
-        .get()
+        .getFullMatch()
 ```

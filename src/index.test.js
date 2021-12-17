@@ -119,7 +119,7 @@ describe('Quantifiers', () => {
 
       const re = new RegExpExtension();
 
-      const EMAIL_REGEX_readable_way = re.fullMatch()
+      const EMAIL_REGEX_readable_way = re
         .capturingGroup( // What for?
           re.alternation(
             // .quantity(..., 0, 1)
@@ -165,7 +165,7 @@ describe('Quantifiers', () => {
             )
           )
         )
-        .get()
+        .getFullMatch()
 
       expect(EMAIL_REGEX_readable_way).toEqual(EMAIL_REGEX_cryptic_way);
     })
