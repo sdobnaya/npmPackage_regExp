@@ -1,11 +1,11 @@
 {
-  "name": "regexp-ext",
-  "version": "1",
+  "name": "human_readable_regexp",
+  "version": "0.1",
   "description": "A tool for descriptive writing of regular expressions",
   "main": "index.js",
   "repository": "https://github.com/Sopelka/regexp-ext",
-  "author": "Sopelka, Iv Ov <iv-ov@users.noreply.github.com>",
-  "license": "We haven't discussed it yet",
+  "author": "Sopelka <Sopelka@users.noreply.github.com>, Iv Ov <iv-ov@users.noreply.github.com>",
+  "license": "MIT",
   "scripts": {
     "test": "jest"
   },
