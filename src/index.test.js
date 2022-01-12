@@ -107,8 +107,10 @@ describe('Quantifiers', () => {
 
       const generatedRegExp = re.str('0 00 000 00 0').findNumerals(3).get();
 
-      expect(generatedRegExp).toEqual(/\b\d\d\d\b/);
+      expect(generatedRegExp).toEqual(/\d\d\d/);
     })
+
+
   })
 
 
