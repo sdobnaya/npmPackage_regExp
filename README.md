@@ -1,6 +1,6 @@
-# Human readable regular expressions
+# Human readable regular expressions (JS)
 
-Regular expressions builder to make your RegExp code readable.
+Regular expressions builder to make your RegExp code readable, that you can find as an npm package as well
 
 > ### Make RegExp readable ~_~~again~~_~
 
